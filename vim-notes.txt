@@ -1,2 +1,5 @@
 ctrl+ ww - switch between nedrtree and opened file
 ctrl+w,q - close split tab
+ctrl+w,o - enlarge
+ctrl+w,v - open vsplit
+:b namehere,:bn,:bn number,:ls - commands to navigate buffers

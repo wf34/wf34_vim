@@ -1,0 +1,6 @@
+[user]
+	email = dmitri.a.kovalenko@gmail.com
+	name = wf34
+
+[diff]
+    external = gitmeld.sh

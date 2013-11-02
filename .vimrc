@@ -53,12 +53,16 @@
     set antialias
     " Better navigation
     set cursorline
-    " Control for long lines
+    " Print special symbols
+    " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+    " set list
+    " Signal the too long line
+    autocmd FileType text setlocal textwidth=80
+    au FileType c,cc,cpp,h,hpp,py,sh au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
-	" NerdTREE plugin configs
-	autocmd VimEnter * NERDTree | wincmd p
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-	\ && b:NERDTreeType == "primary") | q | endif
-
-
+    " NerdTREE plugin configs
+    autocmd VimEnter * NERDTree | wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+    \ && b:NERDTreeType == "primary") | q | endif
+    cmap nt NERDTreeToggle
 
