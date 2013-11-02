@@ -1,0 +1,1 @@
+ctrl+ ww - switch between nedrtree and opened file
