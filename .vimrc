@@ -6,13 +6,14 @@
         
 	" Tabs should be converted to a group of 4 spaces.
 	" This is the official Python convention
-        " (http://www.python.org/dev/peps/pep-0008/)
+    " (http://www.python.org/dev/peps/pep-0008/)
 	" I didn't find a good reason to not use it everywhere.
 	set shiftwidth=4
-        set tabstop=4
-        set smarttab
+    set tabstop=4
+    set smarttab
+	set expandtab
 	
-        " Minimal number of screen lines to keep above and below the cursor.
+    " Minimal number of screen lines to keep above and below the cursor.
 	set scrolloff=999
 	
 	" Use UTF-8.
@@ -25,30 +26,39 @@
 	    colorscheme darkblue
     endif
 
-" Search, higlighting search results and highlighting matched brackets
+	" Search, higlighting search results and highlighting matched brackets
     set showmatch
     set hlsearch
     set incsearch
-    set ignorecase
 	
 	" Status line
 	set laststatus=2
 	set statusline=
-        set statusline+=%-3.3n\                      " buffer number
+    set statusline+=%-3.3n\                      " buffer number
 	set statusline+=%f\                          " filename
 	set statusline+=%h%m%r%w                     " status flags
 	set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
 	set statusline+=%=                           " right align remainder
 	set statusline+=0x%-8B                       " character value
-        set statusline+=%-14(%l,%c%V%)               " line, character
+    set statusline+=%-14(%l,%c%V%)               " line, character
 	set statusline+=%<%P                         " file position
         
 	" Show line number, cursor position.
-set ruler
+	set ruler
+	" Obvious requirement
+	set number
+	"No reserve filecopies ~filename.txt 
+	set nobackup
+    " Better look
+    set antialias
+    " Better navigation
+    set cursorline
+    " Control for long lines
 
-" NerdTREE
-autocmd VimEnter * NERDTree | wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+	" NerdTREE plugin configs
+	autocmd VimEnter * NERDTree | wincmd p
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+	\ && b:NERDTreeType == "primary") | q | endif
 
 
 

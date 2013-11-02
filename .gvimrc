@@ -1,5 +1,5 @@
 " Size of GVim window 
-set lines=35 columns=99 
+set lines=999 columns=999 
 
 " Don't display the menu or toolbar. Just the screen. 
 set guioptions-=m 
@@ -13,4 +13,5 @@ set guioptions-=T
     elseif has('unix') 
         let &guifont="Monospace 12" 
 endif
-
+" Try it with no mouse
+set mousehide
