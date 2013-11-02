@@ -1,1 +1,2 @@
 ctrl+ ww - switch between nedrtree and opened file
+ctrl+w,q - close split tab
