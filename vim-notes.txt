@@ -3,3 +3,4 @@ ctrl+w,q - close split tab
 ctrl+w,o - enlarge
 ctrl+w,v - open vsplit
 :b namehere,:bn,:bn number,:ls - commands to navigate buffers
+Comment a block - Use ctrl-V to do a block selection and then hit I followed by //[ESC].
