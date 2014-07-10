@@ -1,8 +1,11 @@
-	" Enable syntax highlighting.
-	syntax on
+    " for painless copy-paste
+    set pastetoggle=<F10>
+
+    " Enable syntax highlighting.
+	"syntax on
 	
 	" Automatically indent when adding a curly bracket, etc.
-	set smartindent
+    set smartindent
         
 	" Tabs should be converted to a group of 4 spaces.
 	" This is the official Python convention
@@ -11,7 +14,7 @@
 	set shiftwidth=4
     set tabstop=4
     set smarttab
-	set expandtab
+    set expandtab
 	
     " Minimal number of screen lines to keep above and below the cursor.
 	set scrolloff=999
@@ -51,8 +54,14 @@
 	set nobackup
     " Better look
     set antialias
-    " Better navigation
-    set cursorline
+    " Current line highlighted
+    if has("gui_running")
+        set cursorline
+    else
+        set cursorline
+        hi CursorLine cterm=NONE ctermbg=darkgrey
+    endif
+
     " Print special symbols
     " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
     " set list
@@ -64,5 +73,46 @@
     autocmd VimEnter * NERDTree | wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
     \ && b:NERDTreeType == "primary") | q | endif
-    cmap nt NERDTreeToggle
+    " hide/show nerdtree on NE
+    :command NE NERDTreeToggle
 
+
+" Lines added by the Vim-R-plugin command :RpluginConfig (2014-мар-19 00:46):
+set nocompatible
+filetype plugin on
+filetype indent on
+
+" Required by Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+"Plugin 'user/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"no junkfiles
+set noswapfile
