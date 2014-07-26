@@ -25,6 +25,20 @@
 	" Set color scheme that I like.
 	if has("gui_running")
 	    colorscheme desert
+        set lines=999 columns=999 
+
+        " Don't display the menu or toolbar. Just the screen. 
+        set guioptions-=m 
+        set guioptions-=T 
+
+        " Font. Very important. 
+        if has('win32') || has('win64') 
+            set guifont=Consolas:h12:cANSI
+        elseif has('unix') 
+            let &guifont="Monospace 12" 
+        endif
+        " Try it with no mouse
+        set mousehide
 	else
 	    colorscheme darkblue
     endif
@@ -95,24 +109,15 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
-
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/Vim-R-plugin'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
 "no junkfiles
 set noswapfile
+
+"" YouCompleteMe 
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
