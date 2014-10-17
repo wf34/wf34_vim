@@ -11,3 +11,5 @@ Comment a block - Use ctrl-V to do a block selection and then hit I followed by 
     g# same as g* but in backward direction.
     gg goes to the first line in the buffer (or provide a count before the command for a specific line).
     G goes to the last line (or provide a count before the command for a specific line). 
+
+    http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
