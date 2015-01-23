@@ -13,3 +13,6 @@ Comment a block - Use ctrl-V to do a block selection and then hit I followed by 
     G goes to the last line (or provide a count before the command for a specific line). 
 
     http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+
+problem with "not allowed there" might be addressed like that:
+https://github.com/Valloric/YouCompleteMe/issues/303
