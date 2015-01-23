@@ -1,36 +1,47 @@
+"
+" wf34 vimrc
+"
+
+"## GENERAL CONFIGURATION ##################################################
     " for painless copy-paste
     set pastetoggle=<F10>
-
     " Enable syntax highlighting.
-	"syntax on
-	
-	" Automatically indent when adding a curly bracket, etc.
+    syntax on
+    " Automatically indent when adding a curly bracket, etc.
     set smartindent
-        
-	" Tabs should be converted to a group of 4 spaces.
-	" This is the official Python convention
-    " (http://www.python.org/dev/peps/pep-0008/)
-	" I didn't find a good reason to not use it everywhere.
-	set shiftwidth=4
+    " Tabs
+    set shiftwidth=4
     set tabstop=4
     set smarttab
     set expandtab
-	
     " Minimal number of screen lines to keep above and below the cursor.
-	set scrolloff=999
-	
-	" Use UTF-8.
-	set encoding=utf-8
-        
-	" Set color scheme that I like.
+    set scrolloff=999
+    " Use UTF-8.
+    set encoding=utf-8
+    " Search, higlighting search results and highlighting matched brackets
+    set showmatch
+    set hlsearch
+    set incsearch
+    " Show line number, cursor position.
+    set ruler
+    " Obvious requirement
+    set number
+    "No reserve filecopies ~filename.txt 
+    set nobackup
+    " Better look
+    "set antialias
+    "no junkfiles
+    set noswapfile
+
+
+"## COLOR #########################################################
+	" color scheme
 	if has("gui_running")
         colorscheme molokai "desert
         set lines=999 columns=999 
-
         " Don't display the menu or toolbar. Just the screen. 
         set guioptions-=m 
         set guioptions-=T 
-
         " Font. Very important. 
         if has('win32') || has('win64') 
             set guifont=Consolas:h12:cANSI
@@ -42,108 +53,69 @@
 	else
 	    colorscheme molokai "darkblue
     endif
-
-	" Search, higlighting search results and highlighting matched brackets
-    set showmatch
-    set hlsearch
-    set incsearch
-	
-	" Status line
-	set laststatus=2
-	set statusline=
-    set statusline+=%-3.3n\                      " buffer number
-	set statusline+=%f\                          " filename
-	set statusline+=%h%m%r%w                     " status flags
-	set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
-	set statusline+=%=                           " right align remainder
-	set statusline+=0x%-8B                       " character value
-    set statusline+=%-14(%l,%c%V%)               " line, character
-	set statusline+=%<%P                         " file position
-        
-	" Show line number, cursor position.
-	set ruler
-	" Obvious requirement
-	set number
-	"No reserve filecopies ~filename.txt 
-	set nobackup
-    " Better look
-    set antialias
-    
-    " Current line highlighted
-    "if has("gui_running")
-    "    set cursorline
-    "else
-    "    set cursorline
-    "    hi CursorLine cterm=NONE ctermbg=darkgrey
-    "endif
-
-    " Print special symbols
-    " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-    " set list
-    
-    "" Signal the too long line
-    "autocmd FileType text setlocal textwidth=80
-    "au FileType c,cc,cpp,h,hpp,py,sh au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
-    " NerdTREE plugin configs
-    autocmd VimEnter * NERDTree | wincmd p
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-    \ && b:NERDTreeType == "primary") | q | endif
-    " hide/show nerdtree on NE
-    :command NE NERDTreeToggle
+    " molokai theme
+    let g:molokai_original = 1
 
 
-" Lines added by the Vim-R-plugin command :RpluginConfig (2014-мар-19 00:46):
-set nocompatible
-filetype plugin on
-filetype indent on
 
-" Required by Vundle
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-if has('win32') || has('win64')
-    set rtp+=~/vimfiles/bundle/Vundle.vim/
-    let path='~/vimfiles/bundle'
-    call vundle#begin(path)
-elseif has('unix')
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-    " alternatively, pass a path where Vundle should install plugins
-    "call vundle#begin('~/some/path/here')
-endif
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/Vim-R-plugin'
-Plugin 'lervag/vim-latex'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-call vundle#end()            " required
-filetype plugin indent on    " required
+"## VUNGLE CONFIGURATION ##################################################
+    " Required by Vundle
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+    filetype plugin indent on    " required   
+    " set the runtime path to include Vundle and initialize
+    if has('win32') || has('win64')
+        set rtp+=~/vimfiles/bundle/Vundle.vim/
+        let path='~/vimfiles/bundle'
+        call vundle#begin(path)
+    elseif has('unix')
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
+    endif
+    " Plugin list
+        Plugin 'gmarik/Vundle.vim' " required line
+        Plugin 'Valloric/YouCompleteMe'
+        Plugin 'fholgado/minibufexpl.vim'
+        Plugin 'scrooloose/nerdtree'
+        Plugin 'vim-scripts/Vim-R-plugin'
+        Plugin 'lervag/vim-latex'
+        Plugin 'octol/vim-cpp-enhanced-highlight'
+    call vundle#end()
 
 
-"no junkfiles
-set noswapfile
 
-"" YouCompleteMe 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-" switch ycm off/on [next line rem - it's on]
-"let g:loaded_youcompleteme = 1
+"## PLUGIN CONFIGURATIONS #################################################
 
-" CMake syntax highlight
-autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake 
-"" LaTeX
-let g:latex_latexmk_continuous = 0
-let g:latex_fold_enabled = 0
-command Co VimLatexCompile
-command Rei VimLatexReinit
+    "-- NerdTREE ----------------------------------------------------------
+        autocmd VimEnter * NERDTree | wincmd p
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
+        \ && b:NERDTreeType == "primary") | q | endif
+        " hide / show shortcut on NE
+        command NE NERDTreeToggle
 
-" molokai theme
-let g:molokai_original = 1
-" vim-cpp-enhanced-highlight
-let g:cpp_class_scope_highlight = 1
-let g:cpp_experimental_template_highlight = 1
+    "-- Vim-R-plugin ------------------------------------------------------
+        set nocompatible
+        filetype plugin on
+        filetype indent on
+
+    "-- YouCompleteMe -----------------------------------------------------
+        let g:ycm_global_ycm_extra_conf =
+            \'~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+        " switch ycm off/on [next line rem - it's on]
+        "let g:loaded_youcompleteme = 1
+    "-- Vim-LaTeX ---------------------------------------------------------
+        let g:latex_latexmk_continuous = 0
+        let g:latex_fold_enabled = 0
+        command Co VimLatexCompile
+        command Rei VimLatexReinit
+ 
+    "-- vim-cpp-enhanced-highlight ----------------------------------------
+        let g:cpp_class_scope_highlight = 1
+        let g:cpp_experimental_template_highlight = 1
+
+"## MISCELLIOUS #################################################
+    " CMake syntax highlight
+    autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
+
+
+

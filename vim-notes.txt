@@ -16,3 +16,8 @@ Comment a block - Use ctrl-V to do a block selection and then hit I followed by 
 
 problem with "not allowed there" might be addressed like that:
 https://github.com/Valloric/YouCompleteMe/issues/303
+
+problem with loosing buffer on delete after yank
+http://stackoverflow.com/questions/3638542/any-way-to-delete-in-vim-without-overwriting-your-last-yank
+"_dd
+or - work with named registers: yank with "aY paste with "ap
