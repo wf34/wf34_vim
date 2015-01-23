@@ -24,7 +24,7 @@
         
 	" Set color scheme that I like.
 	if has("gui_running")
-	    colorscheme desert
+        colorscheme molokai "desert
         set lines=999 columns=999 
 
         " Don't display the menu or toolbar. Just the screen. 
@@ -40,7 +40,7 @@
         " Try it with no mouse
         set mousehide
 	else
-	    colorscheme darkblue
+	    colorscheme molokai "darkblue
     endif
 
 	" Search, higlighting search results and highlighting matched brackets
@@ -68,20 +68,22 @@
 	set nobackup
     " Better look
     set antialias
+    
     " Current line highlighted
-    if has("gui_running")
-        set cursorline
-    else
-        set cursorline
-        hi CursorLine cterm=NONE ctermbg=darkgrey
-    endif
+    "if has("gui_running")
+    "    set cursorline
+    "else
+    "    set cursorline
+    "    hi CursorLine cterm=NONE ctermbg=darkgrey
+    "endif
 
     " Print special symbols
     " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
     " set list
-    " Signal the too long line
-    autocmd FileType text setlocal textwidth=80
-    au FileType c,cc,cpp,h,hpp,py,sh au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    
+    "" Signal the too long line
+    "autocmd FileType text setlocal textwidth=80
+    "au FileType c,cc,cpp,h,hpp,py,sh au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
 
     " NerdTREE plugin configs
     autocmd VimEnter * NERDTree | wincmd p
@@ -118,6 +120,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/Vim-R-plugin'
+Plugin 'lervag/vim-latex'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -127,6 +131,19 @@ set noswapfile
 
 "" YouCompleteMe 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+" switch ycm off/on [next line rem - it's on]
+"let g:loaded_youcompleteme = 1
 
 " CMake syntax highlight
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake 
+"" LaTeX
+let g:latex_latexmk_continuous = 0
+let g:latex_fold_enabled = 0
+command Co VimLatexCompile
+command Rei VimLatexReinit
+
+" molokai theme
+let g:molokai_original = 1
+" vim-cpp-enhanced-highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
