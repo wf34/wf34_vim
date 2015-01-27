@@ -3,6 +3,8 @@
 "
 
 "## GENERAL CONFIGURATION ##################################################
+    " enable jumping between buffers without saving them every time
+    set hidden
     " for painless copy-paste
     set pastetoggle=<F10>
     " Enable syntax highlighting.
@@ -75,11 +77,11 @@
     " Plugin list
         Plugin 'gmarik/Vundle.vim' " required line
         Plugin 'Valloric/YouCompleteMe'
-        Plugin 'fholgado/minibufexpl.vim'
         Plugin 'scrooloose/nerdtree'
         Plugin 'vim-scripts/Vim-R-plugin'
         Plugin 'lervag/vim-latex'
         Plugin 'octol/vim-cpp-enhanced-highlight'
+        Plugin 'bling/vim-airline'
     call vundle#end()
 
 
@@ -112,6 +114,9 @@
     "-- vim-cpp-enhanced-highlight ----------------------------------------
         let g:cpp_class_scope_highlight = 1
         let g:cpp_experimental_template_highlight = 1
+
+    "-- vim-airline -------------------------------------------------------
+        let g:airline#extensions#tabline#enabled = 1
 
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
