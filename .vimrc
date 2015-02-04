@@ -5,6 +5,7 @@
 "## GENERAL CONFIGURATION ##################################################
     " enable jumping between buffers without saving them every time
     set hidden
+    set autowrite
     " for painless copy-paste
     set pastetoggle=<F10>
     " Enable syntax highlighting.
