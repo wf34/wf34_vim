@@ -104,8 +104,13 @@
     "-- YouCompleteMe -----------------------------------------------------
         let g:ycm_global_ycm_extra_conf =
             \'~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+
+        " disable preview window appearence
+        set completeopt -= preview
+        let g:ycm_add_preview_to_completeopt = 0
         " switch ycm off/on [next line rem - it's on]
-        "let g:loaded_youcompleteme = 1
+        " let g:loaded_youcompleteme = 1
+
     "-- Vim-LaTeX ---------------------------------------------------------
         let g:latex_latexmk_continuous = 0
         let g:latex_fold_enabled = 0
