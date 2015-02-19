@@ -106,7 +106,7 @@
             \'~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
         " disable preview window appearence
-        set completeopt -= preview
+        set completeopt -=preview
         let g:ycm_add_preview_to_completeopt = 0
         " switch ycm off/on [next line rem - it's on]
         " let g:loaded_youcompleteme = 1
@@ -127,6 +127,8 @@
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
     autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
+    " OpenGL shader highlight
+    au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
 
 
 
