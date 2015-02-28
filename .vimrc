@@ -31,10 +31,10 @@
     set number
     "No reserve filecopies ~filename.txt 
     set nobackup
-    " Better look
-    "set antialias
     "no junkfiles
     set noswapfile
+    "line to indicate line length limit
+    set colorcolumn=80
 
 
 "## COLOR #########################################################
@@ -129,6 +129,8 @@
     autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
     " OpenGL shader highlight
     au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+    " auto-commenting switched off
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 
