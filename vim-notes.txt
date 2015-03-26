@@ -21,3 +21,6 @@ problem with loosing buffer on delete after yank
 http://stackoverflow.com/questions/3638542/any-way-to-delete-in-vim-without-overwriting-your-last-yank
 "_dd
 or - work with named registers: yank with "aY paste with "ap
+
+YouCompleteMe  - outputs all paths where c++ standard library includes are located
+g++ -E -x c++ - -v < /dev/null 
