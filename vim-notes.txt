@@ -24,3 +24,6 @@ or - work with named registers: yank with "aY paste with "ap
 
 YouCompleteMe  - outputs all paths where c++ standard library includes are located
 g++ -E -x c++ - -v < /dev/null 
+
+Switch between source/header
+:e %<.cpp

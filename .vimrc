@@ -83,6 +83,7 @@
         Plugin 'lervag/vim-latex'
         Plugin 'octol/vim-cpp-enhanced-highlight'
         Plugin 'bling/vim-airline'
+		Plugin 'derekwyatt/vim-fswitch'
     call vundle#end()
 
 
@@ -131,6 +132,11 @@
     au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
     " auto-commenting switched off
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+    " Set Leader
+    let mapleader = ","
+
+    " Comfortable mapping for switching source and header files
+    nnoremap <Leader>s : FSHere<CR>
 
 
 
