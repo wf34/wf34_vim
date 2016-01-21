@@ -27,3 +27,6 @@ g++ -E -x c++ - -v < /dev/null
 
 Switch between source/header
 :e %<.cpp
+
+reload files when edited outside
+:checktime
