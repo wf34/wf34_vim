@@ -84,6 +84,7 @@
         Plugin 'octol/vim-cpp-enhanced-highlight'
         Plugin 'bling/vim-airline'
 		Plugin 'derekwyatt/vim-fswitch'
+        Plugin 'rking/ag.vim'
     call vundle#end()
 
 
@@ -135,6 +136,9 @@
 
     "-- vim-airline -------------------------------------------------------
         let g:airline#extensions#tabline#enabled = 1
+
+    "-- ag.vim (silver searcher) ------------------------------------------
+        let g:ag_working_path_mode="r"
 
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
