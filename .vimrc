@@ -91,11 +91,23 @@
 "## PLUGIN CONFIGURATIONS #################################################
 
     "-- NerdTREE ----------------------------------------------------------
-        autocmd VimEnter * NERDTree | wincmd p
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")
-        \ && b:NERDTreeType == "primary") | q | endif
+        " autostart and unfold tree
+        autocmd VimEnter * NERDTree | wincmd p |
+                \ if  0 != argc() && filereadable(argv(0)) && !isdirectory(argv(0)) |
+                \     echo 'fuck' |
+                \     NERDTreeFind |
+                \ endif |
+                \ wincmd p |
+        
+
         " hide / show shortcut on NE
         command NE NERDTreeToggle
+
+        " autoclose if last buffer
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+        " actualize tree as navigate through buffers
+        autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
 
     "-- Vim-R-plugin ------------------------------------------------------
         set nocompatible
