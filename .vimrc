@@ -94,7 +94,6 @@
         " autostart and unfold tree
         autocmd VimEnter * NERDTree | wincmd p |
                 \ if  0 != argc() && filereadable(argv(0)) && !isdirectory(argv(0)) |
-                \     echo 'fuck' |
                 \     NERDTreeFind |
                 \ endif |
                 \ wincmd p |
@@ -149,6 +148,10 @@
 
     " Comfortable mapping for switching source and header files
     nnoremap <Leader>s : FSHere<CR>
+
+    " buffer navigation
+    nnoremap <C-PageDown> : bn<CR>
+    nnoremap <C-PageUp> : bp<CR>
 
 
 
