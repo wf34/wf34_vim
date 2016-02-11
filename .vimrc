@@ -88,6 +88,21 @@
     call vundle#end()
 
 
+"## MISCELLIOUS #################################################
+    " CMake syntax highlight
+    autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
+    " OpenGL shader highlight
+    au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+    " auto-commenting switched off
+    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+    " Set Leader
+    let mapleader = ","
+
+    " buffer navigation
+    nnoremap <C-PageDown> : bn<CR>
+    nnoremap <C-PageUp> : bp<CR>
+
 
 "## PLUGIN CONFIGURATIONS #################################################
 
@@ -139,23 +154,10 @@
 
     "-- ag.vim (silver searcher) ------------------------------------------
         let g:ag_working_path_mode="r"
+        nnoremap <Leader>a : Ag!<SPACE>
 
-"## MISCELLIOUS #################################################
-    " CMake syntax highlight
-    autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
-    " OpenGL shader highlight
-    au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
-    " auto-commenting switched off
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-    " Set Leader
-    let mapleader = ","
-
-    " Comfortable mapping for switching source and header files
-    nnoremap <Leader>s : FSHere<CR>
-
-    " buffer navigation
-    nnoremap <C-PageDown> : bn<CR>
-    nnoremap <C-PageUp> : bp<CR>
-
+     "-- vim-fswitch ------------------------------------------------------
+        " Comfortable mapping for switching source and header files
+        nnoremap <Leader>s : FSHere<CR>
 
 
