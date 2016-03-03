@@ -25,10 +25,10 @@
     set showmatch
     set hlsearch
     set incsearch
+    " line numbers
+    set number
     " Show line number, cursor position.
     set ruler
-    " Obvious requirement
-    set number
     "No reserve filecopies ~filename.txt 
     set nobackup
     "no junkfiles
@@ -85,6 +85,7 @@
         Plugin 'bling/vim-airline'
 		Plugin 'derekwyatt/vim-fswitch'
         Plugin 'rking/ag.vim'
+        Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     call vundle#end()
 
 
@@ -100,8 +101,8 @@
     let mapleader = ","
 
     " buffer navigation
-    nnoremap <C-PageDown> : bn<CR>
-    nnoremap <C-PageUp> : bp<CR>
+    nnoremap <C-l> : bn<CR>
+    nnoremap <C-h> : bp<CR>
 
 
 "## PLUGIN CONFIGURATIONS #################################################
@@ -159,5 +160,9 @@
      "-- vim-fswitch ------------------------------------------------------
         " Comfortable mapping for switching source and header files
         nnoremap <Leader>s : FSHere<CR>
+     "-- vim-numbertoggle -------------------------------------------------
+        let g:UseNumberToggleTrigger = 1
+        let g:NumberToggleTrigger = "<F2>"
+
 
 
