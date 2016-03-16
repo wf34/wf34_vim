@@ -36,6 +36,17 @@
     "line to indicate line length limit
     set colorcolumn=80
 
+    " kill bad habit
+    noremap <up> <nop>
+    noremap <down> <nop>
+    noremap <left> <nop>
+    noremap <right> <nop>
+
+    " split switching
+    nnoremap <A-J> <C-W><J>
+    nnoremap <A-K> <C-W><K>
+    nnoremap <A-L> <C-W><L>
+    nnoremap <A-H> <C-W><H>
 
 "## COLOR #########################################################
 	" color scheme
@@ -104,6 +115,8 @@
     nnoremap <C-l> : bn<CR>
     nnoremap <C-h> : bp<CR>
 
+    " search cancel
+    nnoremap <Leader>/ : noh<CR>
 
 "## PLUGIN CONFIGURATIONS #################################################
 
@@ -160,6 +173,7 @@
      "-- vim-fswitch ------------------------------------------------------
         " Comfortable mapping for switching source and header files
         nnoremap <Leader>s : FSHere<CR>
+
      "-- vim-numbertoggle -------------------------------------------------
         let g:UseNumberToggleTrigger = 1
         let g:NumberToggleTrigger = "<F2>"
