@@ -56,6 +56,8 @@
         " Don't display the menu or toolbar. Just the screen. 
         set guioptions-=m 
         set guioptions-=T 
+        set guioptions-=r
+        set guioptions-=L
         " Font. Very important. 
         if has('win32') || has('win64') 
             set guifont=Consolas:h12:cANSI
@@ -137,6 +139,9 @@
 
         " actualize tree as navigate through buffers
         autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
+
+        let g:NERDTreeWinSize = 18
+
 
     "-- Vim-R-plugin ------------------------------------------------------
         set nocompatible
