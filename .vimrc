@@ -174,6 +174,7 @@
     "-- ag.vim (silver searcher) ------------------------------------------
         let g:ag_working_path_mode="r"
         nnoremap <Leader>a : Ag!<SPACE>
+        nnoremap <Leader><C-a> : Ag!<CR>
 
      "-- vim-fswitch ------------------------------------------------------
         " Comfortable mapping for switching source and header files
