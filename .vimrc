@@ -100,7 +100,8 @@
         Plugin 'rking/ag.vim'
         Plugin 'jeffkreeftmeijer/vim-numbertoggle'
     call vundle#end()
-
+    " restriction needed no more
+    filetype on
 
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
