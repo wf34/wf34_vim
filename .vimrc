@@ -36,6 +36,9 @@
     "line to indicate line length limit
     set colorcolumn=80
 
+    " Set Leader
+    let mapleader = ","
+
     " kill bad habit
     noremap <up> <nop>
     noremap <down> <nop>
@@ -43,10 +46,13 @@
     noremap <right> <nop>
 
     " split switching
-    nnoremap <A-J> <C-W><J>
-    nnoremap <A-K> <C-W><K>
-    nnoremap <A-L> <C-W><L>
-    nnoremap <A-H> <C-W><H>
+    nnoremap <A-j> : <C-W><J>
+    nnoremap <A-k> : <C-W><K>
+    nnoremap <A-l> : <C-W><L>
+    nnoremap <A-h> : <C-W><H>
+
+    " save
+    nnoremap <C-S> : w <CR>
 
 "## COLOR #########################################################
 	" color scheme
@@ -54,7 +60,7 @@
         colorscheme molokai "desert
         set lines=999 columns=999 
         " Don't display the menu or toolbar. Just the screen. 
-        set guioptions-=m 
+        set guioptions-=M
         set guioptions-=T 
         set guioptions-=r
         set guioptions-=L
@@ -66,6 +72,8 @@
         endif
         " Try it with no mouse
         set mousehide
+        " in case rightclick needed
+        set mousemodel = popup
 	else
 	    colorscheme molokai "darkblue
     endif
@@ -111,9 +119,6 @@
     " auto-commenting switched off
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-    " Set Leader
-    let mapleader = ","
-
     " buffer navigation
     nnoremap <C-l> : bn<CR>
     nnoremap <C-h> : bp<CR>
@@ -138,8 +143,8 @@
         " autoclose if last buffer
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-        " actualize tree as navigate through buffers
-        autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
+        " actualize tree as navigate through buffers **** works fucking messy, so rem out:
+        " autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
 
         let g:NERDTreeWinSize = 18
 
