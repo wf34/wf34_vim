@@ -1,0 +1,5 @@
+# to enable autojump and smart cd:
+# autojump installed from https://github.com/wting/autojump
+
+[[ -s /home/dmitri/.autojump/etc/profile.d/autojump.sh ]] && source /home/dmitri/.autojump/etc/profile.d/autojump.sh
+source /home/dmitri/.smart_cd.sh
