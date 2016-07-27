@@ -167,10 +167,11 @@
         " let g:loaded_youcompleteme = 1
 
     "-- Vim-LaTeX ---------------------------------------------------------
-        let g:latex_latexmk_continuous = 0
-        let g:latex_fold_enabled = 0
-        command Co VimLatexCompile
-        command Rei VimLatexReinit
+        let g:vimtex_latexmk_continuous = 0
+        let g:vimtex_fold_enabled = 0
+        let g:vimtex_latexmk_build_dir = 'build'
+        command Co VimtexCompile
+        command Rei VimtexReinit
  
     "-- vim-cpp-enhanced-highlight ----------------------------------------
         let g:cpp_class_scope_highlight = 1
