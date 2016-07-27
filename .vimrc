@@ -54,6 +54,8 @@
     " save
     nnoremap <C-S> : w <CR>
 
+    noremap <Leader>t :noautocmd vimgrep /TODO/j * <CR>:cw<CR>
+
 "## COLOR #########################################################
 	" color scheme
 	if has("gui_running")
