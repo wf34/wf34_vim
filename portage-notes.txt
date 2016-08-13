@@ -1,3 +1,7 @@
 equery uses somePacketHere - find out meaning of uses
 equery list "*" | grep alsa - find what installed
 equery files --tree somePacketHere - find files installed
+
+eix - for search ouside of installed packages
+
+euse; gentoolkit
