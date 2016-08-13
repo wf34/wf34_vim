@@ -62,7 +62,7 @@
         colorscheme molokai "desert
         set lines=999 columns=999 
         " Don't display the menu or toolbar. Just the screen. 
-        set guioptions-=M
+        set guioptions-=m
         set guioptions-=T 
         set guioptions-=r
         set guioptions-=L
