@@ -56,34 +56,6 @@
 
     noremap <Leader>t :noautocmd vimgrep /TODO/j * <CR>:cw<CR>
 
-"## COLOR #########################################################
-	" color scheme
-	if has("gui_running")
-        colorscheme molokai "desert
-        set lines=999 columns=999 
-        " Don't display the menu or toolbar. Just the screen. 
-        set guioptions-=m
-        set guioptions-=T 
-        set guioptions-=r
-        set guioptions-=L
-        " Font. Very important. 
-        if has('win32') || has('win64') 
-            set guifont=Consolas:h12:cANSI
-        elseif has('unix') 
-            let &guifont="Monospace 12" 
-        endif
-        " Try it with no mouse
-        set mousehide
-        " in case rightclick needed
-        set mousemodel = popup
-	else
-	    colorscheme molokai "darkblue
-    endif
-    " molokai theme
-    let g:molokai_original = 1
-
-
-
 "## VUNGLE CONFIGURATION ##################################################
     " Required by Vundle
     set nocompatible              " be iMproved, required
@@ -109,9 +81,37 @@
 		Plugin 'derekwyatt/vim-fswitch'
         Plugin 'rking/ag.vim'
         Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+        Plugin 'flazz/vim-colorschemes'
     call vundle#end()
     " restriction needed no more
     filetype on
+
+"## COLOR #########################################################
+	" color scheme
+	if has("gui_running")
+        colorscheme molokai
+        " Don't display the menu or toolbar. Just the screen. 
+        set guioptions-=m
+        set guioptions-=T 
+        set guioptions-=r
+        set guioptions-=L
+        " Font. Very important. 
+        if has('win32') || has('win64') 
+            set guifont=Consolas:h12:cANSI
+        elseif has('unix') 
+            " let &guifont='iosevka-term-regular'
+            "             'gohufont-uni-14'
+            set guifont=Iosevka\ Term\ Light\ 14
+        endif
+        " Try it with no mouse
+        set mousehide
+        " in case rightclick needed
+        " set mousemodel = popup
+	else
+	    colorscheme darkblue
+    endif
+    " molokai theme
+    " let g:molokai_original = 1
 
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
@@ -165,11 +165,14 @@
         let g:ycm_add_preview_to_completeopt = 0
         " switch ycm off/on [next line rem - it's on]
         " let g:loaded_youcompleteme = 1
+        let g:ycm_python_binary_path = 'python3'
 
     "-- Vim-LaTeX ---------------------------------------------------------
         let g:vimtex_latexmk_continuous = 0
         let g:vimtex_fold_enabled = 0
         let g:vimtex_latexmk_build_dir = 'build'
+        let g:vimtex_imaps_enabled = 0
+        let g:vimtex_indent_enabled = 0
         command Co VimtexCompile
         command Rei VimtexReinit
  
@@ -192,6 +195,4 @@
      "-- vim-numbertoggle -------------------------------------------------
         let g:UseNumberToggleTrigger = 1
         let g:NumberToggleTrigger = "<F2>"
-
-
 
