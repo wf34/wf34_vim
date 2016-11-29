@@ -78,10 +78,11 @@
         Plugin 'lervag/vim-latex'
         Plugin 'octol/vim-cpp-enhanced-highlight'
         Plugin 'bling/vim-airline'
-		Plugin 'derekwyatt/vim-fswitch'
+        Plugin 'derekwyatt/vim-fswitch'
         Plugin 'rking/ag.vim'
         Plugin 'jeffkreeftmeijer/vim-numbertoggle'
         Plugin 'flazz/vim-colorschemes'
+        Plugin 'kopischke/vim-fetch'
     call vundle#end()
     " restriction needed no more
     filetype on
