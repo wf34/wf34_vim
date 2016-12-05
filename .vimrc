@@ -11,10 +11,11 @@
     " Enable syntax highlighting.
     syntax on
     " Automatically indent when adding a curly bracket, etc.
-    set smartindent
+    " set smartindent
     " Tabs
-    set shiftwidth=4
-    set tabstop=4
+    set shiftwidth=2
+    set softtabstop=0
+    set tabstop=2
     set smarttab
     set expandtab
     " Minimal number of screen lines to keep above and below the cursor.
@@ -82,6 +83,7 @@
         Plugin 'rking/ag.vim'
         Plugin 'jeffkreeftmeijer/vim-numbertoggle'
         Plugin 'flazz/vim-colorschemes'
+        Plugin 'drmikehenry/vim-headerguard'
         Plugin 'kopischke/vim-fetch'
     call vundle#end()
     " restriction needed no more
@@ -111,8 +113,6 @@
 	else
 	    colorscheme darkblue
     endif
-    " molokai theme
-    " let g:molokai_original = 1
 
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
@@ -121,7 +121,6 @@
     au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
     " auto-commenting switched off
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
     " buffer navigation
     nnoremap <C-l> : bn<CR>
     nnoremap <C-h> : bp<CR>
@@ -197,3 +196,12 @@
         let g:UseNumberToggleTrigger = 1
         let g:NumberToggleTrigger = "<F2>"
 
+    "-- headerguard -------------------------------------------------------
+        function! g:HeaderguardName()
+          let l:name = toupper(expand('%:@'))."_"
+          let l:name = substitute(l:name, "[^0-9a-zA-Z_]", "_", "ge")
+          return l:name
+        endfunction
+        function! g:HeaderguardLine3()
+          return "#endif  // " . g:HeaderguardName()
+        endfunction
