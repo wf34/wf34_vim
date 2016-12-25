@@ -51,7 +51,7 @@ alias '..5'='cd.. 5'
 ###############################################################################
 # persistent history 
 ###############################################################################
-
+HISTTIMEFORMAT="%d/%m/%y %T "
 log_bash_persistent_history()
 {
   [[
@@ -71,7 +71,7 @@ run_on_prompt_command()
 {
         log_bash_persistent_history
 }
-PROMPT_COMMAND="run_on_prompt_command"
+export PROMPT_COMMAND="run_on_prompt_command"
 
 alias phgrep='cat ~/.persistent_history|grep --color'
 alias hgrep='history|grep --color'
