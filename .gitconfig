@@ -1,6 +1,15 @@
-[user]
-	email = dmitri.a.kovalenko@gmail.com
-	name = wf34
-
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+  d = diff
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  stat = log --stat --no-merges --max-count=1
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
 [diff]
-    external = gitmeld.sh
+	tool = gvimdiff
