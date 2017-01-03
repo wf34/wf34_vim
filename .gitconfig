@@ -13,3 +13,5 @@
 	prompt = false
 [diff]
 	tool = gvimdiff
+[push]
+	default = simple
