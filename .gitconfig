@@ -3,7 +3,7 @@
 	br = branch
 	ci = commit
 	st = status
-  d = diff
+  d = difftool
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   stat = log --stat --no-merges --max-count=1
 [merge]
