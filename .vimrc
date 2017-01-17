@@ -75,7 +75,6 @@
         Plugin 'gmarik/Vundle.vim' " required line
         Plugin 'Valloric/YouCompleteMe'
         Plugin 'scrooloose/nerdtree'
-        Plugin 'vim-scripts/Vim-R-plugin'
         Plugin 'lervag/vim-latex'
         Plugin 'octol/vim-cpp-enhanced-highlight'
         Plugin 'bling/vim-airline'
@@ -158,10 +157,6 @@
         " autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
 
         let g:NERDTreeWinSize = 18
-
-
-    "-- Vim-R-plugin ------------------------------------------------------
-        set nocompatible
 
     "-- YouCompleteMe -----------------------------------------------------
         let g:ycm_global_ycm_extra_conf =
