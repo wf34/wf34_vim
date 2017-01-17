@@ -128,6 +128,15 @@
     " search cancel
     nnoremap <Leader>/ : noh<CR>
 
+    " Disable filetype-based indentation settings
+    filetype indent off
+    
+    " Disable loading filetype-based general configuration
+    filetype plugin off
+    
+    " These may be combined for brevity (disabling both)
+    filetype plugin indent off
+
 "## PLUGIN CONFIGURATIONS #################################################
 
     "-- NerdTREE ----------------------------------------------------------
@@ -153,8 +162,6 @@
 
     "-- Vim-R-plugin ------------------------------------------------------
         set nocompatible
-        filetype plugin on
-        filetype indent on
 
     "-- YouCompleteMe -----------------------------------------------------
         let g:ycm_global_ycm_extra_conf =
