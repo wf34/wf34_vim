@@ -3,5 +3,6 @@ equery list "*" | grep alsa - find what installed
 equery files --tree somePacketHere - find files installed
 
 eix - for search ouside of installed packages
+eix --installed-with-use  wxwidgets
 
 euse; gentoolkit
