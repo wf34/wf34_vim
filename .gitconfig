@@ -1,17 +1,26 @@
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-  d = difftool
+  br = branch
+  ci = commit
+  co = checkout
+  d = difftool	
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  rb = rebase
+	st = status
   stat = log --stat --no-merges --max-count=1
+  quick-stats = ! /usr/local/bin/git-quick-stats
+[diff]
+  tool = gvimdiff
+[difftool]
+  prompt = false
+
 [merge]
 	tool = gvimdiff
 	conflictstyle = diff3
 [mergetool]
-	prompt = false
-[diff]
-	tool = gvimdiff
+  prompt = false
+
+
 [push]
-	default = simple
+  default = current
+[pull]
+	default = current
