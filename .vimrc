@@ -6,8 +6,6 @@
     " enable jumping between buffers without saving them every time
     set hidden
     set autowrite
-    " for painless copy-paste
-    set pastetoggle=<F10>
     " Enable syntax highlighting.
     syntax on
     " Automatically indent when adding a curly bracket, etc.
@@ -136,6 +134,11 @@
     " These may be combined for brevity (disabling both)
     filetype plugin indent off
 
+    " clipboard paste
+    nnoremap <silent> <S-Insert> "+p
+    " clipboard copy
+    vnoremap <silent> <C-Insert> "+y
+
 "## PLUGIN CONFIGURATIONS #################################################
 
     "-- NerdTREE ----------------------------------------------------------
@@ -160,7 +163,7 @@
 
     "-- YouCompleteMe -----------------------------------------------------
         let g:ycm_global_ycm_extra_conf =
-            \'~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+            \'~/.vim/bundle/YouCompleteMe/.ycm_conf.py'
 
         " disable preview window appearence
         set completeopt -=preview
