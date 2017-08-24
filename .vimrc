@@ -53,8 +53,6 @@
     " save
     nnoremap <C-S> : w <CR>
 
-    noremap <Leader>t :noautocmd vimgrep /TODO/j * <CR>:cw<CR>
-
 "## VUNGLE CONFIGURATION ##################################################
     " Required by Vundle
     set nocompatible              " be iMproved, required
@@ -91,7 +89,7 @@
 	if has("gui_running")
         colorscheme molokai
         " Don't display the menu or toolbar. Just the screen. 
-        set guioptions-=m
+        set guioptions-=M
         set guioptions-=T 
         set guioptions-=r
         set guioptions-=L

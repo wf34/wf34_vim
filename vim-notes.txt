@@ -30,3 +30,5 @@ Switch between source/header
 
 reload files when edited outside
 :checktime
+
+ZZ, ZQ - exit
