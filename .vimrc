@@ -71,7 +71,7 @@
         Plugin 'gmarik/Vundle.vim' " required line
         Plugin 'Valloric/YouCompleteMe'
         Plugin 'scrooloose/nerdtree'
-        Plugin 'lervag/vim-latex'
+        Plugin 'lervag/vimtex'
         Plugin 'octol/vim-cpp-enhanced-highlight'
         Plugin 'bling/vim-airline'
         Plugin 'derekwyatt/vim-fswitch'
