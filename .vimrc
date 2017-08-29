@@ -9,7 +9,7 @@
     " Enable syntax highlighting.
     syntax on
     " Automatically indent when adding a curly bracket, etc.
-    " set smartindent
+    set smartindent
     " Tabs
     set shiftwidth=2
     set softtabstop=0
@@ -185,6 +185,7 @@
 
     "-- vim-airline -------------------------------------------------------
         let g:airline#extensions#tabline#enabled = 1
+        let g:airline_powerline_fonts = 1
 
     "-- ag.vim (silver searcher) ------------------------------------------
         let g:ag_working_path_mode="r"
