@@ -1,0 +1,5 @@
+[Unit]
+Description=Tool to regularly update system by portage
+
+[Service]
+ExecStart=/opt/wf34_global_scripts/portage_updater.sh

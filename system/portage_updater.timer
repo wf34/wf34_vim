@@ -1,0 +1,7 @@
+[Unit]
+Description=Timer for portage_updater
+
+[Timer]
+OnCalendar=Fri *-*-* 10:08:34
+Persistent=true
+WakeSystem=true

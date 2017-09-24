@@ -1,0 +1,5 @@
+{
+    "system/*.service" : "/etc/systemd/system",
+    "system/*.timer" : "/etc/systemd/system",
+    "system/*.sh" : "/opt/wf34_global_scripts"
+}
