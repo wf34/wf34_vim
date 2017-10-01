@@ -6,7 +6,8 @@ import os
 import sys
 import subprocess
 import shutil
-
+import shlex
+import hashlib
 
 def check_dir_existance(d):
     if not os.path.isdir(d):
@@ -14,11 +15,31 @@ def check_dir_existance(d):
     assert os.path.isdir(d)
 
 
-def show_diff(files):
+def copy(s, d, root_access_needed):
+    if root_access_needed:
+        subprocess.call(shlex.split('sudo cp {} {}'.format(s, d)))
+    else:
+        shutil.copy2(s, d)
+
+
+def get_md5(f):
+    return hashlib.md5(open(f, 'rb').read()).hexdigest()
+
+
+def is_same(*args):
+    assert len(args) == 2
+    assert all(list(filter(lambda x : os.path.isfile(x), args)))
+    return get_md5(args[0]) == get_md5(args[1])
+
+
+def show_diff(files, root_access_needed):
     assert len(files) == 2
     for f in files:
         assert os.path.isfile(f), f
     c = ['gvimdiff'] + files
+    if root_access_needed:
+        c = shlex.split('sudo ' + ' '.join(c))
+
     rc = subprocess.call(c,
                          stdout = subprocess.DEVNULL,
                          stderr = subprocess.DEVNULL)
@@ -44,22 +65,26 @@ def query_choice(question, opts, default = None):
 
 
 def process_entry(s, d):
+    d = os.path.expanduser(d)
+    root_access_needed = not d.startswith('/home')
     print('from', s, 'to', d)
     assert os.path.isfile(s), s
     check_dir_existance(d)
     d_abs = os.path.join(d, os.path.basename(s))
-    if os.path.isfile(d_abs):
+    if os.path.isfile(d_abs) and is_same(s, d_abs):
+       print('{} and {} are same. Do nothing.'.format(s, d_abs)) 
+    elif os.path.isfile(d_abs):
         answer = query_choice('{} exists.\n View Diff/Prefer New/Prefer Old?' \
                                   .format(d_abs),
                               ['d', 'n', 'o'], 'n')
         if 'd' == answer:
-            show_diff([s, d_abs])
+            show_diff([s, d_abs], root_access_needed)
         elif 'n' == answer:
-            shutil.copy2(s, d)
+            copy(s, d, root_access_needed)
         elif 'o' == answer:
             print('Did nothing')
     else:
-        shutil.copy2(s, d)
+        copy(s, d, root_access_needed)
 
 
 def expand_wildcard_sequence(wp):
