@@ -53,36 +53,25 @@
     " save
     nnoremap <C-S> : w <CR>
 
-"## VUNGLE CONFIGURATION ##################################################
-    " Required by Vundle
-    set nocompatible              " be iMproved, required
-    filetype off                  " required
-    filetype plugin indent on    " required   
-    " set the runtime path to include Vundle and initialize
-    if has('win32') || has('win64')
-        set rtp+=~/vimfiles/bundle/Vundle.vim/
-        let path='~/vimfiles/bundle'
-        call vundle#begin(path)
-    elseif has('unix')
-        set rtp+=~/.vim/bundle/Vundle.vim
-        call vundle#begin()
-    endif
-    " Plugin list
-        Plugin 'gmarik/Vundle.vim' " required line
-        Plugin 'Valloric/YouCompleteMe'
-        Plugin 'scrooloose/nerdtree'
-        Plugin 'lervag/vimtex'
-        Plugin 'octol/vim-cpp-enhanced-highlight'
-        Plugin 'bling/vim-airline'
-        Plugin 'derekwyatt/vim-fswitch'
-        Plugin 'rking/ag.vim'
-        Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-        Plugin 'flazz/vim-colorschemes'
-        Plugin 'drmikehenry/vim-headerguard'
-        Plugin 'kopischke/vim-fetch'
-    call vundle#end()
-    " restriction needed no more
-    filetype on
+    " navigation
+    nnoremap <Leader>l :ls<CR>:b<Space>
+
+"## PLUGINS CONFIGURATION ##################################################
+    call plug#begin('~/.vim/plugged')
+        Plug 'Valloric/YouCompleteMe'
+        Plug 'scrooloose/nerdtree'
+        Plug 'lervag/vimtex'
+        Plug 'octol/vim-cpp-enhanced-highlight'
+        Plug 'bling/vim-airline'
+        Plug 'derekwyatt/vim-fswitch'
+        Plug 'rking/ag.vim'
+        Plug 'jeffkreeftmeijer/vim-numbertoggle'
+        Plug 'flazz/vim-colorschemes'
+        Plug 'drmikehenry/vim-headerguard'
+        Plug 'kopischke/vim-fetch'
+        Plug 'jeaye/color_coded'
+        Plug 'rdnetto/YCM-Generator'
+    call plug#end()
 
 "## COLOR #########################################################
 	" color scheme
@@ -169,6 +158,7 @@
         " switch ycm off/on [next line rem - it's on]
         " let g:loaded_youcompleteme = 1
         let g:ycm_python_binary_path = 'python3'
+        let g:ycm_confirm_extra_conf = 0
 
     "-- Vim-LaTeX ---------------------------------------------------------
         let g:vimtex_latexmk_continuous = 0
@@ -209,3 +199,8 @@
         function! g:HeaderguardLine3()
           return "#endif  // " . g:HeaderguardName()
         endfunction
+
+    "-- color_coded -------------------------------------------------------
+        let g:color_coded_enabled = 1
+        let g:color_coded_filetypes = ['c', 'cpp', 'h', 'hpp', 'cxx', 'cc']
+
