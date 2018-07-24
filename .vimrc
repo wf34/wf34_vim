@@ -58,20 +58,24 @@
 
 "## PLUGINS CONFIGURATION ##################################################
     call plug#begin('~/.vim/plugged')
-        Plug 'Valloric/YouCompleteMe'
+        Plug 'Valloric/YouCompleteMe', { 'on' : [] }
+        Plug 'rdnetto/YCM-Generator', { 'on' : [] }
         Plug 'scrooloose/nerdtree'
-        Plug 'lervag/vimtex'
-        Plug 'octol/vim-cpp-enhanced-highlight'
         Plug 'bling/vim-airline'
-        Plug 'derekwyatt/vim-fswitch'
         Plug 'rking/ag.vim'
         Plug 'jeffkreeftmeijer/vim-numbertoggle'
         Plug 'flazz/vim-colorschemes'
-        Plug 'drmikehenry/vim-headerguard'
         Plug 'kopischke/vim-fetch'
-        Plug 'jeaye/color_coded'
-        Plug 'rdnetto/YCM-Generator'
+        Plug 'lervag/vimtex', { 'for' : ['tex', 'bib'] }
+        Plug 'derekwyatt/vim-fswitch', { 'for' : ['c', 'cpp'] }
+        Plug 'jeaye/color_coded', { 'for' : ['c', 'cpp'] }
+        Plug 'embear/vim-uncrustify', { 'for' : ['c', 'cpp'] }
     call plug#end()
+
+    augroup load_ycm
+      autocmd!
+      autocmd InsertEnter * call plug#load('YouCompleteMe') | autocmd! load_ycm
+    augroup END
 
 "## COLOR #########################################################
 	" color scheme
@@ -149,8 +153,8 @@
         let g:NERDTreeWinSize = 18
 
     "-- YouCompleteMe -----------------------------------------------------
-        let g:ycm_global_ycm_extra_conf =
-            \'~/.vim/bundle/YouCompleteMe/.ycm_conf.py'
+        " let g:ycm_global_ycm_extra_conf =
+        "     \'~/.vim/bundle/YouCompleteMe/.ycm_conf.py'
 
         " disable preview window appearence
         set completeopt -=preview
@@ -190,17 +194,13 @@
         let g:UseNumberToggleTrigger = 1
         let g:NumberToggleTrigger = "<F2>"
 
-    "-- headerguard -------------------------------------------------------
-        function! g:HeaderguardName()
-          let l:name = toupper(expand('%:@'))."_"
-          let l:name = substitute(l:name, "[^0-9a-zA-Z_]", "_", "ge")
-          return l:name
-        endfunction
-        function! g:HeaderguardLine3()
-          return "#endif  // " . g:HeaderguardName()
-        endfunction
 
     "-- color_coded -------------------------------------------------------
         let g:color_coded_enabled = 1
         let g:color_coded_filetypes = ['c', 'cpp', 'h', 'hpp', 'cxx', 'cc']
+
+    "-- uncrustify -------------------------------------------------------
+        let g:uncrustify_config_file = '/home/dmk0v/.uncrustify.cfg' "  '~/projects/sdc/tools/uncrustify/googlecpp.cfg'
+        let g:uncrustify_debug = 1
+        nnoremap <Leader>U : call Uncrustify() <CR>
 
