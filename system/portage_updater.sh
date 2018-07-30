@@ -36,7 +36,7 @@ if [ $? -eq 0 ]; then
   echo '=== revdep-rebuild === ' | tee -a ${log}
   revdep-rebuild -v 2>&1 | tee -a ${log}
   
-  perl-cleaner --all 2>&1 | tee -a ${log}
+  perl-cleaner --all --quiet 2>&1 | tee -a ${log}
   echo '=== depclean === ' | tee -a ${log}
   emerge --depclean --quiet 2>&1 | tee -a ${log}
   glsa-check -t all 2>&1 | tee -a ${log}
