@@ -8,6 +8,7 @@
     set autowrite
     " Enable syntax highlighting.
     syntax on
+    filetype plugin on
     " Automatically indent when adding a curly bracket, etc.
     set smartindent
     " Tabs
@@ -33,7 +34,7 @@
     "no junkfiles
     set noswapfile
     "line to indicate line length limit
-    set colorcolumn=80
+    set colorcolumn=100
 
     " Set Leader
     let mapleader = ","
@@ -64,7 +65,7 @@
         Plug 'bling/vim-airline'
         Plug 'rking/ag.vim'
         Plug 'jeffkreeftmeijer/vim-numbertoggle'
-        Plug 'flazz/vim-colorschemes'
+        Plug 'rafi/awesome-vim-colorschemes'
         Plug 'kopischke/vim-fetch'
         Plug 'lervag/vimtex', { 'for' : ['tex', 'bib'] }
         Plug 'derekwyatt/vim-fswitch', { 'for' : ['c', 'cpp'] }
@@ -78,30 +79,27 @@
     augroup END
 
 "## COLOR #########################################################
-	" color scheme
-	if has("gui_running")
-        colorscheme molokai
-        " Don't display the menu or toolbar. Just the screen. 
-        set guioptions-=M
-        set guioptions-=T 
-        set guioptions-=r
-        set guioptions-=L
-        " Font. Very important. 
-        if has('win32') || has('win64') 
-            set guifont=Consolas:h12:cANSI
-        elseif has('unix') 
-            " let &guifont='iosevka-term-regular'
-            "             'gohufont-uni-14'
-            set guifont=Iosevka\ Term\ Light\ 14
-        endif
-        " Try it with no mouse
-        set mousehide
-        " in case rightclick needed
-        " set mousemodel = popup
-	else
-	    colorscheme darkblue
-    endif
+  set background=dark
+  let g:two_firewatch_italics=1
+  colorscheme two-firewatch
+  let g:airline_theme='twofirewatch'
 
+	if has("gui_running")
+    set guioptions-=M
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=L
+    " Font. Very important.
+    if has('win32') || has('win64')
+        set guifont=Consolas:h12:cANSI
+    elseif has('unix')
+        set guifont=Iosevka\ Term\ Light\ 14
+    endif
+    " Try it with no mouse
+    set mousehide
+    " in case rightclick needed
+    " set mousemodel = popup
+  endif
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
     autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
@@ -116,14 +114,14 @@
     " search cancel
     nnoremap <Leader>/ : noh<CR>
 
-    " Disable filetype-based indentation settings
-    filetype indent off
-    
-    " Disable loading filetype-based general configuration
-    filetype plugin off
-    
-    " These may be combined for brevity (disabling both)
-    filetype plugin indent off
+    "" Disable filetype-based indentation settings
+    "filetype indent off
+    "
+    "" Disable loading filetype-based general configuration
+    "filetype plugin off
+    "
+    "" These may be combined for brevity (disabling both)
+    "filetype plugin indent off
 
     " clipboard paste
     nnoremap <silent> <S-Insert> "+p
@@ -173,10 +171,6 @@
         command Co VimtexCompile
         command Rei VimtexReinit
  
-    "-- vim-cpp-enhanced-highlight ----------------------------------------
-        let g:cpp_class_scope_highlight = 1
-        let g:cpp_experimental_template_highlight = 1
-
     "-- vim-airline -------------------------------------------------------
         let g:airline#extensions#tabline#enabled = 1
         let g:airline_powerline_fonts = 1
@@ -196,7 +190,7 @@
 
 
     "-- color_coded -------------------------------------------------------
-        let g:color_coded_enabled = 1
+        let g:color_coded_enabled = 0
         let g:color_coded_filetypes = ['c', 'cpp', 'h', 'hpp', 'cxx', 'cc']
 
     "-- uncrustify -------------------------------------------------------
