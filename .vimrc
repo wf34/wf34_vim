@@ -62,11 +62,13 @@
         Plug 'Valloric/YouCompleteMe', { 'on' : [] }
         Plug 'rdnetto/YCM-Generator', { 'on' : [] }
         Plug 'scrooloose/nerdtree'
+        Plug 'wincent/command-t'
         Plug 'bling/vim-airline'
         Plug 'rking/ag.vim'
         Plug 'jeffkreeftmeijer/vim-numbertoggle'
         Plug 'rafi/awesome-vim-colorschemes'
         Plug 'kopischke/vim-fetch'
+        Plug 'ConradIrwin/vim-bracketed-paste'
         Plug 'lervag/vimtex', { 'for' : ['tex', 'bib'] }
         Plug 'derekwyatt/vim-fswitch', { 'for' : ['c', 'cpp'] }
         Plug 'jeaye/color_coded', { 'for' : ['c', 'cpp'] }
@@ -137,6 +139,7 @@
                 \     NERDTreeFind |
                 \ endif |
                 \ wincmd p |
+                \ NERDTreeToggle
         
 
         " hide / show shortcut on NE
@@ -161,6 +164,7 @@
         " let g:loaded_youcompleteme = 1
         let g:ycm_python_binary_path = 'python3'
         let g:ycm_confirm_extra_conf = 0
+        let g:ycm_show_diagnostics_ui = 0
 
     "-- Vim-LaTeX ---------------------------------------------------------
         let g:vimtex_latexmk_continuous = 0
@@ -172,7 +176,6 @@
         command Rei VimtexReinit
  
     "-- vim-airline -------------------------------------------------------
-        let g:airline#extensions#tabline#enabled = 1
         let g:airline_powerline_fonts = 1
 
     "-- ag.vim (silver searcher) ------------------------------------------
