@@ -6,6 +6,7 @@
     " enable jumping between buffers without saving them every time
     set hidden
     set autowrite
+    set noshowmode
     " Enable syntax highlighting.
     syntax on
     filetype plugin on
@@ -63,7 +64,7 @@
         Plug 'rdnetto/YCM-Generator', { 'on' : [] }
         Plug 'scrooloose/nerdtree'
         Plug 'wincent/command-t'
-        Plug 'bling/vim-airline'
+        Plug 'itchyny/lightline.vim'
         Plug 'rking/ag.vim'
         Plug 'jeffkreeftmeijer/vim-numbertoggle'
         Plug 'rafi/awesome-vim-colorschemes'
@@ -82,9 +83,7 @@
 
 "## COLOR #########################################################
   set background=dark
-  let g:two_firewatch_italics=1
   colorscheme two-firewatch
-  let g:airline_theme='twofirewatch'
 
 	if has("gui_running")
     set guioptions-=M
@@ -101,6 +100,8 @@
     set mousehide
     " in case rightclick needed
     " set mousemodel = popup
+  else
+    set term=screen-256color
   endif
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
@@ -175,8 +176,8 @@
         command Co VimtexCompile
         command Rei VimtexReinit
  
-    "-- vim-airline -------------------------------------------------------
-        let g:airline_powerline_fonts = 1
+    "-- lightline -------------------------------------------------------
+        set laststatus=2
 
     "-- ag.vim (silver searcher) ------------------------------------------
         let g:ag_working_path_mode="r"
@@ -197,7 +198,7 @@
         let g:color_coded_filetypes = ['c', 'cpp', 'h', 'hpp', 'cxx', 'cc']
 
     "-- uncrustify -------------------------------------------------------
-        let g:uncrustify_config_file = '/home/dmk0v/.uncrustify.cfg' "  '~/projects/sdc/tools/uncrustify/googlecpp.cfg'
+        let g:uncrustify_config_file = '/home/dmk0v/projects/sdc/tools/uncrustify/googlecpp.cfg'
         let g:uncrustify_debug = 1
         nnoremap <Leader>U : call Uncrustify() <CR>
 

@@ -7,14 +7,13 @@
   rb = rebase
 	st = status
   stat = log --stat --no-merges --max-count=1
-  quick-stats = ! /usr/local/bin/git-quick-stats
 [diff]
-  tool = gvimdiff
+  tool = vimdiff
 [difftool]
   prompt = false
 
 [merge]
-	tool = gvimdiff
+	tool = vimdiff
 	conflictstyle = diff3
 [mergetool]
   prompt = false
@@ -26,3 +25,5 @@
 	default = current
 [core]
 	editor = vim
+[fetch]
+	prune = true
