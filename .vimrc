@@ -202,3 +202,5 @@
         let g:uncrustify_debug = 1
         nnoremap <Leader>U : call Uncrustify() <CR>
 
+    "-- command-t -------------------------------------------------------
+      let g:CommandTCancelMap = ['<ESC>', '<C-c>']
