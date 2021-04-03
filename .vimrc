@@ -61,8 +61,6 @@
 "## PLUGINS CONFIGURATION ##################################################
     call plug#begin('~/.vim/plugged')
         Plug 'Valloric/YouCompleteMe', { 'on' : [] }
-        Plug 'rdnetto/YCM-Generator', { 'on' : [] }
-        Plug 'scrooloose/nerdtree'
         Plug 'wincent/command-t'
         Plug 'itchyny/lightline.vim'
         Plug 'rking/ag.vim'
@@ -71,9 +69,7 @@
         Plug 'kopischke/vim-fetch'
         Plug 'ConradIrwin/vim-bracketed-paste'
         Plug 'lervag/vimtex', { 'for' : ['tex', 'bib'] }
-        Plug 'derekwyatt/vim-fswitch', { 'for' : ['c', 'cpp'] }
         Plug 'jeaye/color_coded', { 'for' : ['c', 'cpp'] }
-        Plug 'embear/vim-uncrustify', { 'for' : ['c', 'cpp'] }
     call plug#end()
 
     augroup load_ycm
@@ -83,7 +79,10 @@
 
 "## COLOR #########################################################
   set background=dark
-  colorscheme two-firewatch
+  colorscheme onehalfdark
+  autocmd VimEnter * highlight Comment ctermbg=Black
+  autocmd VimEnter * highlight Normal ctermbg=Black
+  autocmd VimEnter * highlight NonText ctermbg=Black
 
 	if has("gui_running")
     set guioptions-=M
@@ -102,7 +101,9 @@
     " set mousemodel = popup
   else
     set term=screen-256color
+    set t_Co=256
   endif
+
 "## MISCELLIOUS #################################################
     " CMake syntax highlight
     autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt setf cmake
@@ -133,27 +134,6 @@
 
 "## PLUGIN CONFIGURATIONS #################################################
 
-    "-- NerdTREE ----------------------------------------------------------
-        " autostart and unfold tree
-        autocmd VimEnter * NERDTree | wincmd p |
-                \ if  0 != argc() && filereadable(argv(0)) && !isdirectory(argv(0)) |
-                \     NERDTreeFind |
-                \ endif |
-                \ wincmd p |
-                \ NERDTreeToggle
-        
-
-        " hide / show shortcut on NE
-        command NE NERDTreeToggle
-
-        " autoclose if last buffer
-        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-        " actualize tree as navigate through buffers **** works fucking messy, so rem out:
-        " autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
-
-        let g:NERDTreeWinSize = 18
-
     "-- YouCompleteMe -----------------------------------------------------
         " let g:ycm_global_ycm_extra_conf =
         "     \'~/.vim/bundle/YouCompleteMe/.ycm_conf.py'
@@ -178,29 +158,20 @@
  
     "-- lightline -------------------------------------------------------
         set laststatus=2
+        let g:lightline = { 'colorscheme': 'solarized' }
 
     "-- ag.vim (silver searcher) ------------------------------------------
         let g:ag_working_path_mode="r"
         nnoremap <Leader>a : Ag!<SPACE>
         nnoremap <Leader><C-a> : Ag!<CR>
 
-     "-- vim-fswitch ------------------------------------------------------
-        " Comfortable mapping for switching source and header files
-        nnoremap <Leader>s : FSHere<CR>
-
      "-- vim-numbertoggle -------------------------------------------------
-        let g:UseNumberToggleTrigger = 1
-        let g:NumberToggleTrigger = "<F2>"
-
+        nnoremap <Leader><C-n> : set relativenumber!<CR>
 
     "-- color_coded -------------------------------------------------------
         let g:color_coded_enabled = 0
         let g:color_coded_filetypes = ['c', 'cpp', 'h', 'hpp', 'cxx', 'cc']
 
-    "-- uncrustify -------------------------------------------------------
-        let g:uncrustify_config_file = '/home/dmk0v/projects/sdc/tools/uncrustify/googlecpp.cfg'
-        let g:uncrustify_debug = 1
-        nnoremap <Leader>U : call Uncrustify() <CR>
-
     "-- command-t -------------------------------------------------------
       let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+      let g:CommandTMaxFiles=200000
