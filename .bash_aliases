@@ -19,11 +19,13 @@ alias l='ls -alF'
 alias la='ls -A'
 alias ll='ls -CF'
 
-###############################################################################
-# autojump
-###############################################################################
-[[ -s /home/dmitri/.autojump/etc/profile.d/autojump.sh ]] && \
-   source /home/dmitri/.autojump/etc/profile.d/autojump.sh
+rinfo() {
+  rosbag info "$@"
+}
+
+rinfoh() {
+  rinfo "$@" | head
+}
 
 ###############################################################################
 # cmart_cd
@@ -74,4 +76,11 @@ run_on_prompt_command()
 export PROMPT_COMMAND="run_on_prompt_command"
 
 alias phgrep='cat ~/.persistent_history|grep --color'
+function phgrep10() { phgrep "${1}" | tail -n 10; }
 alias hgrep='history|grep --color'
+alias g='git'
+# do not lock ctrl s in terminal
+if [[ -t 0 && $- = *i* ]]
+then
+    stty -ixon
+fi
