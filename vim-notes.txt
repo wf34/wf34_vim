@@ -32,3 +32,5 @@ reload files when edited outside
 :checktime
 
 ZZ, ZQ - exit
+
+map <leader>x 0yy :!xdg-open <C-R>" command to open the line as a link in a browser
