@@ -79,6 +79,10 @@ alias phgrep='cat ~/.persistent_history|grep --color'
 function phgrep10() { phgrep "${1}" | tail -n 10; }
 alias hgrep='history|grep --color'
 alias g='git'
+
+# env vars
+export VISUAL="vim"
+
 # do not lock ctrl s in terminal
 if [[ -t 0 && $- = *i* ]]
 then
