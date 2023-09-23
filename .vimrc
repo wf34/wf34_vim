@@ -58,6 +58,8 @@
     " navigation
     nnoremap <Leader>l :ls<CR>:b<Space>
 
+    set wildignore+=*/node_modules
+
 "## PLUGINS CONFIGURATION ##################################################
     call plug#begin('~/.vim/plugged')
         Plug 'Valloric/YouCompleteMe', { 'on' : [] }
